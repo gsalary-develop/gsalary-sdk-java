@@ -5,6 +5,23 @@ API文档:
 - [中文](https://api.gsalary.com/doc/index.html?lang=cn)
 - [英文](https://api.gsalary.com/doc/index.html?lang=en)
 
+## 导入
+
+### Maven
+```xml
+<dependency>
+    <groupId>com.gsalary</groupId>
+    <artifactId>gsalary-sdk-java</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
+### Gradle
+
+```text
+compile 'com.gsalary:gsalary-sdk-java:1.0'
+```
+
 ## 准备环境
 
 将appid、客户端私钥、服务端公钥、接入域名配置到GSalary Client

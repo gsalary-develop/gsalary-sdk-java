@@ -5,6 +5,23 @@ API Document:
 - [CN version](https://api.gsalary.com/doc/index.html?lang=cn)
 - [EN version](https://api.gsalary.com/doc/index.html?lang=en)
 
+## Import
+
+### Maven
+```xml
+<dependency>
+    <groupId>com.gsalary</groupId>
+    <artifactId>gsalary-sdk-java</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
+### Gradle
+
+```text
+compile 'com.gsalary:gsalary-sdk-java:1.0'
+```
+
 ## Prepare
 
 Configure your appid, client-side private key, server-side public key and endpoint to the GSalary Client.
