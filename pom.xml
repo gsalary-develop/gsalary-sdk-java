@@ -9,6 +9,7 @@
     <version>1.0</version>
     <name>GSalary SDK for Java</name>
     <description>Api document please referer to https://api.gsalary.com/doc/index.html</description>
+    <url>https://github.com/gsalary-develop/gsalary-sdk-java.git</url>
 
     <properties>
         <java.version>8</java.version>
@@ -135,7 +136,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
-                            <autoPublish>true</autoPublish>
+                            <autoPublish>false</autoPublish>
                             <tokenAuth>true</tokenAuth>
                         </configuration>
                     </plugin>
