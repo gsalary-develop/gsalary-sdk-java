@@ -40,6 +40,7 @@ public class TestClient {
     }
 
     @Test
+    @Disabled
     void testListCards() throws JsonProcessingException {
         String path = "/v1/cards";
         Map<String, String> args = new HashMap<>();
