@@ -20,7 +20,7 @@ public final class GSalarySignatureHelper {
 
     public SignatureHeader sign(RawGSalaryRequest request) {
         String timestamp = String.valueOf(Instant.now().toEpochMilli());
-        String signBase = String.format("%s %s%n%s%n%s%n%s%n", request.getHttpMethod(), request.concatPath(),
+        String signBase = String.format("%s %s\n%s\n%s\n%s\n", request.getHttpMethod(), request.concatPath(),
                 connConfig.getAppid(),
                 timestamp,
                 request.getBodyHash());
@@ -34,7 +34,7 @@ public final class GSalarySignatureHelper {
     public boolean verify(String method, String pathWithQuery, String body, String authorizationHeader) {
         String bodyHash = Base64.getEncoder().encodeToString(DigestUtils.sha256(body));
         SignatureHeader header = SignatureHeader.parse(authorizationHeader);
-        String signBase = String.format("%s %s%n%s%n%s%n%s%n", method, pathWithQuery,
+        String signBase = String.format("%s %s\n%s\n%s\n%s\n", method, pathWithQuery,
                 connConfig.getAppid(),
                 header.getTime(),
                 bodyHash);

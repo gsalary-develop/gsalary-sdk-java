@@ -6,7 +6,7 @@
 
     <groupId>com.gsalary</groupId>
     <artifactId>gsalary-sdk-java</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <name>GSalary SDK for Java</name>
     <description>Api document please referer to https://api.gsalary.com/doc/index.html</description>
     <url>https://github.com/gsalary-develop/gsalary-sdk-java.git</url>

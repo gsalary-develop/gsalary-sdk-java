@@ -9,6 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,11 +21,11 @@ public class TestClient {
     private GSalaryClient client;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         GSalaryConnectionConfig config = new GSalaryConnectionConfig()
-                .setAppid("1111")
-                .setClientPrivateKeyFromStream(getClass().getClassLoader().getResourceAsStream("test-private.pem"))
-                .setServerPublicKeyFromStream(getClass().getClassLoader().getResourceAsStream("test-public.pem"))
+                .setAppid(System.getenv("GSALARY_SDK_APPID"))
+                .setClientPrivateKeyFromStream(Files.newInputStream(Paths.get(System.getenv("GSALARY_SDK_PRIV_KEY"))))
+                .setServerPublicKeyFromStream(Files.newInputStream(Paths.get(System.getenv("GSALARY_SDK_PUB_KEY"))))
                 .setEndpoint("https://api-test.gsalary.com");
 
         client = new GSalaryClient(config);
@@ -48,6 +53,17 @@ public class TestClient {
         args.put("create_end", "2024-05-01T00:00:00+00:00");
         args.put("page", "1");
         args.put("limit", "20");
+        RawGSalaryRequest request = RawGSalaryRequest.get(path, args);
+        String responseContent = client.request(request);
+        System.out.println(responseContent);
+    }
+
+    @Test
+    @Disabled
+    void testCardProducts(){
+        String path = "/v1/card_support/products";
+        Map<String, String> args = new HashMap<>();
+        args.put("card_type","VIRTUAL");
         RawGSalaryRequest request = RawGSalaryRequest.get(path, args);
         String responseContent = client.request(request);
         System.out.println(responseContent);
