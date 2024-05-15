@@ -12,7 +12,7 @@ API文档:
 <dependency>
     <groupId>com.gsalary</groupId>
     <artifactId>gsalary-sdk-java</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
