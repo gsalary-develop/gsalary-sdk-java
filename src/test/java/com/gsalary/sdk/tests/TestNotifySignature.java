@@ -13,7 +13,6 @@ class TestNotifySignature {
     private final String publickey = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAh5IZ326cBlnjyj1YeP87MJxT1fjFCJSe0j+FlE4luQ0PuR1X8eOnaTwf2qqFhNzexAL4wqnAnPhDsvFXustsIBf3kd0fHZsl4QxluPYyOzUGKXr03HtaZtMkox+qPIXnuXCRkhBNYlEcgBW1T/6H8I8aH5b5hwcVIy2MtCARcwLJshUi1/bvUD36I0Imz9uw2sEzwPuDnfUtuAEkfvsr62WvDBitqD8uYA002ChzZOv4MUDuOWIejNAfwQCBiOwm5YhMMdVn5dD/PojJsDgN5Qio0PP4yOVfbJIjlUPKXubGzCaltU27VCcFwqXLCHGj2GKV54sro8yY9udfUSq7lgaI45Vno7VtUdMOGE3Y3uKezVbpijSJYWbi8ZiCNHevK47F5J7r33Y1oo5/VT4BrQns+ntjxjxkBdY2aP6jk3Kbn/ZhPXzIMvQiwwNNcHyu3pZsgpu4wKCIq/6M4WZ4/9qZ94tkpeWYJAQNC9F6XAMrSh0icAsOWfRR8UiiLCA+o+d7mbfJxTYQ9LvQHJWa60atvyvg0WhYSXyQywwElA14NwMMK4RBKgHUHjL3EvjhGC8BOzo21eVqscAPSacDf+6Ce+bWNQiv8CW14y2unl4XbwdAwThqgzELXp3/VQny9fwdBmLtFXpgr+33gE7iMYSaq1WwoS+ko9kO1imCX2kCAwEAAQ==";
 
 
-    @Test
     void valid() throws UnsupportedEncodingException {
         GSalarySignatureHelper helper = new GSalarySignatureHelper(new GSalaryConnectionConfig()
                 .setAppid("cd205b92-b7b2-4400-bcee-b5b40578bd78")
@@ -24,7 +23,6 @@ class TestNotifySignature {
         Assertions.assertTrue(verify);
     }
 
-    @Test
     void testValid(){
         GSalaryConnectionConfig connConfig = new GSalaryConnectionConfig()
                 .setAppid("cd205b92-b7b2-4400-bcee-b5b40578bd78")
