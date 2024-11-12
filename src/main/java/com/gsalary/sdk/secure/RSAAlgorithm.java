@@ -9,7 +9,6 @@ import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
 
 public final class RSAAlgorithm {
     private RSAAlgorithm() {
@@ -41,7 +40,7 @@ public final class RSAAlgorithm {
             signature.initSign(privKey);
             signature.update(signContent.getBytes(StandardCharsets.UTF_8));
             byte[] signed = signature.sign();
-            return Base64.getEncoder().encodeToString(signed);
+            return Base64Helper.encode(signed, false);
         } catch (NoSuchAlgorithmException | SignatureException | InvalidKeyException e) {
             throw new GSalarySignatureException("Failed to sign content", e);
         }
@@ -52,7 +51,7 @@ public final class RSAAlgorithm {
             Signature signature = Signature.getInstance("SHA256WithRSA");
             signature.initVerify(pubKey);
             signature.update(signContent.getBytes(StandardCharsets.UTF_8));
-            return signature.verify(Base64.getDecoder().decode(sign));
+            return signature.verify(Base64Helper.decode(sign));
         } catch (NoSuchAlgorithmException | SignatureException | InvalidKeyException e) {
             throw new GSalarySignatureException("Failed to sign content", e);
         }

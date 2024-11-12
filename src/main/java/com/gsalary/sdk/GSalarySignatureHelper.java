@@ -32,8 +32,12 @@ public final class GSalarySignatureHelper {
     }
 
     public boolean verify(String method, String pathWithQuery, String body, String authorizationHeader) {
-        String bodyHash = Base64.getEncoder().encodeToString(DigestUtils.sha256(body));
-        SignatureHeader header = SignatureHeader.parse(authorizationHeader);
+        return verify(method, pathWithQuery, body, authorizationHeader, false);
+    }
+
+    public boolean verify(String method, String pathWithQuery, String body, String authorizationHeader, boolean ignoreExpire) {
+        String bodyHash = body == null ? "" : Base64.getEncoder().encodeToString(DigestUtils.sha256(body));
+        SignatureHeader header = SignatureHeader.parse(authorizationHeader, ignoreExpire);
         String signBase = String.format("%s %s\n%s\n%s\n%s\n", method, pathWithQuery,
                 connConfig.getAppid(),
                 header.getTime(),

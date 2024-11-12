@@ -19,7 +19,7 @@ API Document:
 ### Gradle
 
 ```text
-compile 'com.gsalary:gsalary-sdk-java:1.0'
+compile 'com.gsalary:gsalary-sdk-java:1.0.1'
 ```
 
 ## Prepare

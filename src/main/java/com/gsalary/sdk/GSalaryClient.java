@@ -72,7 +72,7 @@ public class GSalaryClient {
                     ErrorInfo errorInfo = objectMapper.readValue(responseContent, ErrorInfo.class);
                     throw new GSalaryServiceException(responseCode, errorInfo.getBizResult(), errorInfo.getErrorCode(), errorInfo.getMessage());
                 }
-                if (!signatureHelper.verify(request.getHttpMethod().name(), request.concatPath(), responseContent, authorization)) {
+                if (!signatureHelper.verify(request.getHttpMethod().name(), request.concatPath(), responseContent, authorization, false)) {
                     throw new GSalarySignatureException("Failed to verify response signature");
                 }
                 return responseContent;

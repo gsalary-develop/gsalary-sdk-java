@@ -16,7 +16,7 @@ public class SignatureHeader {
     private String time;
     private String signature;
 
-    public static SignatureHeader parse(String headerValue) {
+    public static SignatureHeader parse(String headerValue, boolean ignoreExpire) {
         Map<String, String> args = Arrays.stream(headerValue.split(","))
                 .map(String::trim)
                 .filter(kvPair -> kvPair.contains("="))
@@ -33,13 +33,13 @@ public class SignatureHeader {
         if (StringTools.isAnyEmpty(alg, timeStr, sign)) {
             throw new GSalarySignatureException("Incorrect authentication");
         }
-        if (Duration.between(Instant.now(), Instant.ofEpochMilli(Long.decode(timeStr))).abs().compareTo(Duration.ofMinutes(5)) > 0) {
+        if (!ignoreExpire && Duration.between(Instant.now(), Instant.ofEpochMilli(Long.decode(timeStr))).abs().compareTo(Duration.ofMinutes(5)) > 0) {
             throw new GSalarySignatureException("Signature time expired");
         }
         if (!"RSA2".equals(alg)) {
             throw new GSalarySignatureException("Incorrect algorithm");
         }
-        return new SignatureHeader(alg,timeStr,sign);
+        return new SignatureHeader(alg, timeStr, sign);
     }
 
     public SignatureHeader(String algorithm, String time, String signature) {
