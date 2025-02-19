@@ -12,14 +12,14 @@ API Document:
 <dependency>
     <groupId>com.gsalary</groupId>
     <artifactId>gsalary-sdk-java</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```text
-compile 'com.gsalary:gsalary-sdk-java:1.0.1'
+compile 'com.gsalary:gsalary-sdk-java:1.0.2'
 ```
 
 ## Prepare
